@@ -75,25 +75,26 @@ export const Reserve = ({ setOpen, hotelId }) => {
       cancelButtonText: 'Tôi muốn hủy',
     }).then(async (result) => {
       if (result.isConfirmed) {
+        try {
+          await Promise.all(
+            selectdRooms.map((roomId) => {
+              const res = axios.put(`/rooms/availability/${roomId}`, {
+                dates: allDates,
+              });
+              return res.data;
+            })
+          );
+          // await axios.put(`/users/`{id}`);
+          setOpen(false);
+          // navigate('/');
+        } catch (error) {
+          console.log(error);
+        }
         Swal.fire(
           'Đặt thành công',
           'Cảm ơn vì đã lựa chọn dịch vụ của chúng tôi.',
           'success'
         );
-      }
-      try {
-        await Promise.all(
-          selectdRooms.map((roomId) => {
-            const res = axios.put(`/rooms/availability/${roomId}`, {
-              dates: allDates,
-            });
-            return res.data;
-          })
-        );
-        setOpen(false);
-        // navigate('/');
-      } catch (error) {
-        console.log(error);
       }
     });
   };

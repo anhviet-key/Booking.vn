@@ -5,6 +5,7 @@ import {
   faPerson,
   faPlane,
   faTaxi,
+  faHotel,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './header.css';
@@ -13,14 +14,14 @@ import { useState } from 'react';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
-import { useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
 
 const JsonData = ['Hồ Chí Minh', 'Đà Nẵng', 'Hà Nội', 'Nha Trang'];
 
-const Header = ({ type }) => {
+const Header = ({ type, user: userx }) => {
   const [destination, setDestination] = useState('');
   const [openDate, setOpenDate] = useState(false);
   const [value, setValue] = useState('');
@@ -84,7 +85,13 @@ const Header = ({ type }) => {
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
-            <span>Lưu trú</span>
+            <NavLink
+              to="/"
+              style={({ isActive }) => ({
+                color: isActive ? '#febb02' : '#fff',
+              })}>
+              <span>Lưu trú</span>
+            </NavLink>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faPlane} />
@@ -97,11 +104,28 @@ const Header = ({ type }) => {
           <div className="headerListItem">
             <FontAwesomeIcon icon={faBed} />
             <span>Attractions</span>
-          </div>
+          </div> 
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faTaxi} />
-            <span>Airport taxis</span>
-          </div> */}
+              <FontAwesomeIcon icon={faTaxi} />
+              <span>Airport taxis</span>
+            </div>*/}
+          {(user || userx) && (
+            <div
+              className="headerListItem headerHover"
+              style={{
+                justifyContent: 'flex-end',
+                cursor: 'pointer',
+              }}>
+              <FontAwesomeIcon icon={faHotel} />
+              <NavLink
+                to="/manager"
+                style={({ isActive }) => ({
+                  color: isActive ? '#febb02' : '#fff',
+                })}>
+                <span>Danh sách của bạn</span>
+              </NavLink>
+            </div>
+          )}
         </div>
         {type !== 'list' && (
           <>

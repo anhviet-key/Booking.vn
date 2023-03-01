@@ -23,7 +23,7 @@ export const Login = () => {
     try {
       const res = await axios.post('/auth/login', credentials);
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
-          navigate(-1);
+      navigate(-1);
     } catch (error) {
       dispatch({ type: 'LOGIN_FAILURE', payload: error.response.data });
     }
@@ -83,7 +83,7 @@ export const Login = () => {
                 Đăng nhập
               </button>
             </form>
-            {error && <span style={{color:'red'}}>{error.message}</span>}
+            {error && <span style={{ color: 'red' }}>{error.message}</span>}
           </div>
         </div>
       </div>

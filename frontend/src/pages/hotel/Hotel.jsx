@@ -18,7 +18,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { Reserve } from '../../components/reserve/Reserve';
 import { Popup } from '../../components/reserve/Popup';
 
-const Hotel = () => {
+const Hotel = ({ userx }) => {
   const paramId = useParams();
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
@@ -60,7 +60,7 @@ const Hotel = () => {
   };
 
   const handleClick = () => {
-    if (user) {
+    if (user || userx) {
       setOpenModel(true);
     } else {
       navigate('/login');
@@ -68,7 +68,7 @@ const Hotel = () => {
   };
   return (
     <div>
-      <Navbar />
+      <Navbar user={userx} />
       <Header type="list" />
       {loading ? (
         'please wait...'
@@ -237,7 +237,9 @@ const Hotel = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="question" onClick={()=>setOpenModel2(true)}>
+                    <div
+                      className="question"
+                      onClick={() => setOpenModel2(true)}>
                       Đặt câu hỏi
                     </div>
                   </div>
@@ -282,7 +284,7 @@ const Hotel = () => {
         </div>
       )}
       {openModel && <Reserve setOpen={setOpenModel} hotelId={paramId.id} />}
-      {openModel2 && <Popup setOpen={setOpenModel2} />}
+      {openModel2 && <Popup setOpen={setOpenModel2} user={userx} />}
     </div>
   );
 };

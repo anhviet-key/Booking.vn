@@ -23,8 +23,8 @@ router.put('/:id', verifyAdmin, UpdateId);
 router.put('/availability/:id', UpdateRoomAvailability);
 
 //Delete
-router.delete('/:id/:hotelid', verifyAdmin, DeleteId);
-
+router.delete('/:id', verifyAdmin, DeleteId);
+///:hotelid
 // //Get By Id
 router.get('/:id', GetId);
 

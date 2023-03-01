@@ -10,7 +10,7 @@ import useFetch from '../../hook/useFetch';
 import Footer from '../../components/footer/Footer';
 import MailList from '../../components/mailList/MailList';
 
-const List = () => {
+const List = ({ userx }) => {
   const location = useLocation();
   // eslint-disable-next-line no-unused-vars
   const [destination, setDestination] = useState(location.state.destination);
@@ -33,7 +33,7 @@ const List = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar user={userx} />
       <Header type="list" />
       <div className="listContainer">
         <div className="listWrapper">
@@ -109,7 +109,9 @@ const List = () => {
                 </div>
               </div>
             </div>
-            <button onClick={handleClick}>Tìm kiếm</button>
+            <button onClick={handleClick} className="ListBtn">
+              Tìm kiếm
+            </button>
           </div>
           <div className="listResult">
             {loading

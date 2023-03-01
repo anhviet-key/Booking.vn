@@ -11,7 +11,7 @@ const Home = ({ userx }) => {
   return (
     <div>
       <Navbar user={userx} />
-      <Header />
+      <Header user={userx} />
       <div className="homeContainer">
         <Featured />
         <h1 className="homeTitle">Tìm theo loại chỗ nghỉ</h1>

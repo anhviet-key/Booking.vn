@@ -5,11 +5,12 @@ import './navbar.css';
 
 const Navbar = ({ user: userx }) => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const logout = () => {
     window.open('http://localhost:8800/api/auth/logout', '_self');
+    navigate(1);
   };
-  console.log(userx);
-  const navigate = useNavigate();
 
   const handleClick = () => {
     localStorage.removeItem('user');
@@ -30,7 +31,7 @@ const Navbar = ({ user: userx }) => {
                   src={
                     user !== null
                       ? 'https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814050_960_720.png'
-                      : userx.photos[0].value
+                      : userx.img
                   }
                   alt="not found"
                   style={{
@@ -44,7 +45,7 @@ const Navbar = ({ user: userx }) => {
               {user !== null
                 ? user.username
                 : userx !== null
-                ? userx.displayName
+                ? userx.username
                 : ''}
               {user ? (
                 <button className="navButton" onClick={handleClick}>

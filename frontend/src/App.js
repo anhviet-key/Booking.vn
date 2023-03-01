@@ -6,6 +6,7 @@ import { Login } from './pages/login/Login';
 import './app.css';
 import { Register } from './pages/register/Register';
 import { useEffect, useState } from 'react';
+import { Manager } from './pages/manager/Manager';
 function App() {
   const [user, setUser] = useState(null);
 
@@ -38,8 +39,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home userx={user} />} />
-        <Route path="/hotels" element={<List />} />
-        <Route path="/hotels/:id" element={<Hotel />} />
+        <Route path="/hotels" element={<List userx={user} />} />
+        <Route path="/manager" element={<Manager userx={user} />} />
+        <Route path="/hotels/:id" element={<Hotel userx={user} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

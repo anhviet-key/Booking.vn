@@ -1,8 +1,11 @@
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
-export const Popup = ({ setOpen }) => {
+export const Popup = ({ setOpen, userx }) => {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="reserve">
       <div className="rContainer" style={{ width: 500 }}>
@@ -17,24 +20,28 @@ export const Popup = ({ setOpen }) => {
             nghỉ
           </h3>
           <form action="">
-            <div>
-              <label style={{ display: 'block' }} htmlFor="email">
-                Địa chỉ email
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Nhập email . . ."
-                style={{
-                  width: '100%',
-                  margin: '10px 0',
-                  border: '1px solid #ccc',
-                  padding: '10px 5px',
-                  fontSize: '16px',
-                }}
-              />
-            </div>
+            {user || userx ? (
+              ''
+            ) : (
+              <div>
+                <label style={{ display: 'block' }} htmlFor="email">
+                  Địa chỉ email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Nhập email . . ."
+                  style={{
+                    width: '100%',
+                    margin: '10px 0',
+                    border: '1px solid #ccc',
+                    padding: '10px 5px',
+                    fontSize: '16px',
+                  }}
+                />
+              </div>
+            )}
             <div>
               <label style={{ display: 'block' }} htmlFor="text">
                 Nhập câu hỏi của bạn ở đây:

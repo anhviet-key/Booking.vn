@@ -1,11 +1,11 @@
-.navbar{
+.navbar {
   height: 50px;
-  background-color: #003580!important;
+  background-color: #003580 !important;
   display: flex;
   justify-content: center;
 }
 
-.navContainer{
+.navContainer {
   width: 100%;
   max-width: 1024px;
   color: white;
@@ -14,14 +14,24 @@
   justify-content: space-between;
 }
 
-.logo{
+.logo {
   font-weight: 500;
 }
 
-.navButton{
+.navButton {
   margin-left: 20px;
-  border: none;
   padding: 5px 10px;
   cursor: pointer;
   color: #003580;
+  border-radius: 5px;
+  border: 1px solid white;
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.navButton:hover {
+  background-color: #003580;
+  color: white;
 }

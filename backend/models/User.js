@@ -20,18 +20,24 @@ const AuthSchema = new mongoose.Schema(
     country: {
       type: String,
     },
+    provider: {
+      type: String,
+      unique: true,
+    },
     img: {
       type: String,
     },
     city: {
       type: String,
     },
-    hostory: [{ number: Number, unavailable: { type: [Date] } }],
+    history: [
+      { idHotels: String, number: Number, unavailable: { type: [Date] } },
+    ],
     phone: {
       type: String,
-      required: true,
       unique: true,
     },
+
     isAdmin: {
       type: Boolean,
       default: false,

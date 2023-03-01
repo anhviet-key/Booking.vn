@@ -32,8 +32,11 @@
   border: 1px solid white;
   padding: 10px;
   border-radius: 20px;
+  color: #febb02;
 }
-
+a{
+  text-decoration: none;
+}
 .headerDesc {
   margin: 20px 0px;
   color: #ccc;
@@ -43,11 +46,20 @@
   background-color: #0071c2;
   color: white;
   font-weight: 500;
-  border: none;
+  border: 1px solid #0071c2;
   padding: 10px;
   cursor: pointer;
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+.headerBtn:hover {
+  background-color: white;
+  color: #0071c2;
 
+}
 .headerSearch {
   height: 30px;
   background-color: white;
@@ -154,4 +166,14 @@
 .searchBar li:hover {
   background-color: #ccc;
   cursor: pointer;
+}
+.headerHover svg {
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+}
+.headerHover:hover svg {
+  color: darkorange;
 }
